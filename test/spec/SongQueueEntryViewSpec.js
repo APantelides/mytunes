@@ -1,4 +1,4 @@
-describe('LibraryEntryView', function() {
+describe('SongQueueEntryView', function() {
   var view, model;
 
   beforeEach(function() {
@@ -7,7 +7,7 @@ describe('LibraryEntryView', function() {
       title: 'Never Gonna Mock You Up',
       url: 'example/url',
     });
-    view = new LibraryEntryView({model: model});
+    view = new SongQueueEntryView({model: model});
     view.render();
   });
 
@@ -22,13 +22,13 @@ describe('LibraryEntryView', function() {
   //   SongModel.prototype.play.restore();
   // });
 
-  it('queues clicked songs', function() {
-    sinon.spy(SongModel.prototype, 'enqueue');
+  it('remove clicked songs', function() {
+    sinon.spy(SongModel.prototype, 'demove');
 
     view.$el.children().first().click();
-    expect(model.enqueue).to.have.been.called;
+    expect(model.demove).to.have.been.called;
 
-    SongModel.prototype.enqueue.restore();
+    SongModel.prototype.demove.restore();
   });
 
 });
